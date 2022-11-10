@@ -1,7 +1,7 @@
 const API_URL = "https://andrzej.zukowski.edu.pl/apps/tetris/api/";
 const STORE_ON_SERVER = false;
 const localStorageMaps = 'Tetris_Maps', localStorageStats = 'Tetris_Stats';
-const shapes = [
+var shapes = [
 	{
 		map: [[0, 0, 0], [1, 1, 1], [0, 0, 0]],
 		color: '#cc0000'
@@ -389,7 +389,7 @@ $(document).ready(function() {
 				}
 				mapItem += '</table>';
 				mapItem += '</div>';
-				mapItem += '<div class="color"><input type="color" id="colorpicker-' + item + '" onchange="mapEditor.setColor(this.id, this.value)" value="' + shapes[item].color + '"></div>';
+				mapItem += '<div class="color"><input type="color" id="colorpicker-' + item + '" onchange="setMapColor(this.id, this.value)" value="' + shapes[item].color + '"></div>';
 				mapItem += '<div class="actions"><button id="save-' + item + '" class="btn btn-sm btn-primary update-map">Zapisz</button>&nbsp;<button id="delete-' + item + '" class="btn btn-sm btn-warning delete-map">Usuń</button></div>';
 				mapItem += '</div>';
 				mapItems += mapItem;
@@ -408,7 +408,7 @@ $(document).ready(function() {
 			}
 			newItem += '</table>';
 			newItem += '</div>';
-			newItem += '<div class="color"><input type="color" id="colorpicker-new" onchange="mapEditor.setColor(this.id, this.value)" value="' + mapEditor.customColor + '"></div>';
+			newItem += '<div class="color"><input type="color" id="colorpicker-new" onchange="setMapColor(this.id, this.value)" value="' + mapEditor.customColor + '"></div>';
 			newItem += '<div class="actions"><button id="add-map" class="btn btn-sm btn-success disabled">Dodaj do kolekcji</button></div>';
 			newItem += '</div>';
 			mapItems += newItem;
@@ -687,6 +687,10 @@ $(document).ready(function() {
 		localStorage.setItem(localStorageMaps, JSON.stringify(customMaps));
 		$('button#close-editor').click();
 	});
+
+	setMapColor = function(object, color) {
+		mapEditor.setColor(object, color);
+	};
 		  
 });
 
