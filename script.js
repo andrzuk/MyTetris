@@ -115,14 +115,19 @@ $(document).ready(function() {
 			return false;
 		},
 		checkCompletion: function() {
-			var completed = 0;
-			for (i = 0; i < this.colsCount; i++) {
-				completed += gameArea.cellStatus[i][this.rowsCount - 1] ? 1 : 0;
-			}
-			return completed == this.colsCount;
-		},
-		collapse: function() {
 			for (j = this.rowsCount - 1; j > 0; j--) {
+				var completed = 0;
+				for (i = 0; i < this.colsCount; i++) {
+					completed += gameArea.cellStatus[i][j] ? 1 : 0;
+				}
+				if (completed == this.colsCount) {
+					return j;
+				}
+			}
+			return false;
+		},
+		collapse: function(row) {
+			for (j = row; j > 0; j--) {
 				for (i = 0; i < this.colsCount; i++) {
 					gameArea.cellStatus[i][j] = gameArea.cellStatus[i][j - 1];
 				}
@@ -130,7 +135,7 @@ $(document).ready(function() {
 			for (i = 0; i < this.colsCount; i++) {
 				gameArea.cellStatus[i][0] = 0;
 			}
-			for (j = this.rowsCount - 1; j > 0; j--) {
+			for (j = row; j > 0; j--) {
 				for (i = 0; i < this.colsCount; i++) {
 					if (this.cellStatus[i][j]) {
 						if (this.cellStatus[i][j] <= shapes.length) {
@@ -331,9 +336,10 @@ $(document).ready(function() {
 					}
 				}
 			}
-			if (gameArea.checkCompletion()) {
+			var completedRow = gameArea.checkCompletion()
+			if (completedRow) {
 				setTimeout(function() {
-					gameArea.collapse();
+					gameArea.collapse(completedRow);
 				}, playTime);
 			}
 			else {
