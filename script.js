@@ -1,4 +1,4 @@
-const API_URL = "https://andrzej.zukowski.edu.pl/apps/tetris/api/";
+const API_URL = "https://andrzej.zukowski.pl/apps/tetris/api/";
 const STORE_ON_SERVER = false;
 const localStorageMaps = 'Tetris_Maps', localStorageStats = 'Tetris_Stats';
 var shapes = [
@@ -336,7 +336,7 @@ $(document).ready(function() {
 					}
 				}
 			}
-			var completedRow = gameArea.checkCompletion()
+			var completedRow = gameArea.checkCompletion();
 			if (completedRow) {
 				setTimeout(function() {
 					gameArea.collapse(completedRow);
@@ -697,6 +697,6 @@ $(document).ready(function() {
 	setMapColor = function(object, color) {
 		mapEditor.setColor(object, color);
 	};
-		  
+
 });
 

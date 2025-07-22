@@ -29,14 +29,14 @@ div#game-information {
     text-align: center; 
 }
 div#game-information > span { 
-    width: 100px; 
+    width: 140px; 
     height: 20px; 
     color: #555; 
     display: inline-block; 
     text-align: left; 
 }
 div#game-information > span#position { 
-    width: 130px; 
+    width: 150px; 
 }
 div#game-information > span#record { 
     color: #090; 
