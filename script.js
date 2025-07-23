@@ -106,7 +106,7 @@ $(document).ready(function() {
 					if (figure.shape.map[i][j]) {
 						if (figure.position.x + i < 0) return true;
 						if (figure.position.x + i > this.colsCount - 1) return true;
-						if (figure.position.y + j < -10) return true;
+						if (figure.position.y + j < -figure.size) return true;
 						if (figure.position.y + j > this.rowsCount - 1) return true;
 						if (gameArea.cellStatus[figure.position.x + i][figure.position.y + j]) return true;
 					}
