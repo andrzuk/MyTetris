@@ -23,6 +23,10 @@ div#main-container {
     margin-top: 20px; 
     text-align: center; 
 }
+div#game-play {
+    width: 1000px;
+    margin: 0 auto;
+}
 div#game-information { 
     margin: 5px; 
     padding: 1em;
@@ -57,8 +61,7 @@ canvas#game-canvas {
 }
 span#panel-left, span#panel-right { 
     display: inline-block; 
-    padding: 0 10px; 
-    position: fixed; 
+    padding: 0 100px; 
     vertical-align: top; 
     top: 150px; 
 }
@@ -113,6 +116,8 @@ div#editor-button, div#close-button {
     right: 20px; 
 }
 div#game-map { 
+    width: 1000px; 
+    margin: 0 auto;
     display: none; 
 }
 div#game-map > h4 { 
