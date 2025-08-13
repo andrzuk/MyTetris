@@ -696,6 +696,13 @@ $(document).ready(function() {
 
 	setMapColor = function(object, color) {
 		mapEditor.setColor(object, color);
+		for (i = 0; i < mapEditor.customMap.length; i++) {
+			for (j = 0; j < mapEditor.customMap.length; j++) {
+				if (mapEditor.customMap[i][j]) {
+					$('button#map-new-' + i + '-' + j).css({ 'background': color });
+				}
+			}
+		}
 	};
 
 });
